@@ -1,0 +1,38 @@
+AppBundle\Entity\Location:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\LocationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        address:
+            type: text
+            nullable: true
+        geoLat:
+            type: float
+            nullable: true
+            column: geo_lat
+        geoLng:
+            type: float
+            nullable: true
+            column: geo_lng
+        description:
+            type: text
+            nullable: true
+
+    manyToOne:
+        organisation:
+            targetEntity: Organisation
+            inversedBy: locations
+            joinColumn:
+                name: organisation_id
+                referencedColumnName: id
+
+    lifecycleCallbacks: {  }

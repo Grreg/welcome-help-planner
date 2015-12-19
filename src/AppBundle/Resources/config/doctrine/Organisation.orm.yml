@@ -1,0 +1,39 @@
+AppBundle\Entity\Organisation:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\OrganisationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        address:
+            type: text
+            nullable: true
+        getLat:
+            type: float
+            nullable: true
+            column: geo_lat
+        geoLng:
+            type: float
+            nullable: true
+            column: geo_lng
+        logo:
+            type: string
+            length: 255
+            nullable: true
+        description:
+            type: text
+            nullable: true
+
+    oneToMany:
+        locations:
+            targetEntity: Location
+            mappedBy: organisation
+
+    lifecycleCallbacks: {  }

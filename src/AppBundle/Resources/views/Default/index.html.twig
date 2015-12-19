@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+    body {
+        font: 16px "Helvetica Neue", sans-serif;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #333;
+        border-collapse: collapse;
+    }
+    </style>
+</head>
+<body>
+
+<table>
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Locations</th>
+    </tr>
+</thead>
+<tbody>
+    {% for organisation in organisations %}
+    <tr>
+        <td>{{ organisation.name }}</td>
+        <td>{{ organisation.description }}</td>
+        <td>
+            <ul>
+                {% for location in organisation.locations %}
+                <li>{{ location.name }}</li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+</body>
+</html>
