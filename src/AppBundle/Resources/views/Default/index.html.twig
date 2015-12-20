@@ -1,51 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de" ng-app="HelpPlanner">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-
-    <style>
-    body {
-        font: 16px "Helvetica Neue", sans-serif;
-        color: #333;
-    }
-
-    table {
-        width: 100%;
-    }
-
-    td, th {
-        border: 1px solid #333;
-        border-collapse: collapse;
-    }
-    </style>
+    <meta name="viewport" content="width=device-width">
+    <base href="{{ path('frontend') }}">
+    <link rel="stylesheet" href="{{ asset('assets/app.min.css') }}">
+    <title>Welcome Help Planner</title>
 </head>
-<body>
+<body ng-cloak>
+    <div ui-view></div>
 
-<table>
-<thead>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Locations</th>
-    </tr>
-</thead>
-<tbody>
-    {% for organisation in organisations %}
-    <tr>
-        <td>{{ organisation.name }}</td>
-        <td>{{ organisation.description }}</td>
-        <td>
-            <ul>
-                {% for location in organisation.locations %}
-                <li>{{ location.name }}</li>
-                {% endfor %}
-            </ul>
-        </td>
-    </tr>
-    {% endfor %}
-</tbody>
-</table>
-
+    <script src="{{ asset('assets/js/vendor.min.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
 </body>
 </html>

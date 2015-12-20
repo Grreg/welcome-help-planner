@@ -8,16 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function homepageAction(Request $request)
+    public function frontendAction(Request $request)
     {
-        $organisations = $this->getDoctrine()
-            ->getRepository('AppBundle:Organisation')
-            ->findAll();
-
-        // var_dump($organisations);
-
-        return $this->render('AppBundle:Default:index.html.twig', [
-            'organisations' => $organisations,
-        ]);
+        return $this->render('AppBundle:Default:index.html.twig');
     }
 }
