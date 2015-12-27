@@ -10,6 +10,7 @@
     "angular-i18n": "~1.4.5",
     "angular-ui-router": "~0.2.15",
     "angularjs": "~1.4.5",
-    "angular-ui-validate": "~1.2.1"
+    "angular-ui-validate": "~1.2.1",
+    "sass-bootstrap": "~3.0.2"
   }
 }

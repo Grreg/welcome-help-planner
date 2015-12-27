@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="navbarOpen = !navbarOpen">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="homepage"><strong>Welcome Help!</strong> Planner</a>
+        </div>
+
+        <div class="navbar-collapse" ng-class="{collapse: !navbarOpen}">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Shifts</a></li>
+                <li><a href="#">Administration</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
