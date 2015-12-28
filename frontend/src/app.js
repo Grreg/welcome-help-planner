@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('HelpPlanner', ['ui.router', 'ui.validate'])
+    angular.module('HelpPlanner', ['ui.router', 'ui.validate', 'ui.bootstrap'])
     .config(function config ($locationProvider, $urlRouterProvider, $stateProvider) {
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/notfound');

@@ -29,7 +29,9 @@ var conf = {
         '../web/assets/vendor/angular/angular.js',
         '../web/assets/vendor/angular-i18n/angular-locale_de-de.js',
         '../web/assets/vendor/angular-ui-router/release/angular-ui-router.js',
-        '../web/assets/vendor/angular-ui-validate/dist/validate.js'
+        '../web/assets/vendor/angular-ui-validate/dist/validate.js',
+        '../web/assets/vendor/angular-bootstrap/ui-bootstrap.js',
+        '../web/assets/vendor/angular-bootstrap/ui-bootstrap-tpls.js'
     ],
     scripts: [
         'src/app.js',
