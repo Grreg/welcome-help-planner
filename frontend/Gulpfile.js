@@ -18,6 +18,7 @@ var fileinclude   = require('gulp-file-include');
 var ngAnnotate    = require('gulp-ng-annotate');
 var gulpFilter    = require('gulp-filter');
 var merge         = require('merge-stream');
+var babel         = require('gulp-babel');
 //var debug         = require('gulp-debug');
 var log           = console.log;
 
@@ -88,9 +89,12 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
     return gulp.src(conf.scripts)
         .pipe(plumber({errorHandler: errorNotifier}))
-        .pipe(jshint())
+        .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter(stylish))
         .pipe(sourcemaps.init())
+            .pipe(babel({
+                presets: ['es2015']
+            }))
             .pipe(concat('app.min.js'))
             .pipe(ngAnnotate({single_quotes: true}))
             .pipe(uglify({compress: {drop_debugger: false}}))
