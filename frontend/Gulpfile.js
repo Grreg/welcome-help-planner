@@ -95,7 +95,6 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
     return gulp.src(conf.scripts)
         .pipe(addStream.obj(prepareTemplates()))
-        .pipe(debug())
         .pipe(plumber({errorHandler: errorNotifier}))
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter(stylish))
