@@ -14,11 +14,13 @@ var sourcemaps    = require('gulp-sourcemaps');
 var changed       = require('gulp-changed');
 var jshint        = require('gulp-jshint');
 var stylish       = require('jshint-stylish');
-var fileinclude   = require('gulp-file-include');
 var ngAnnotate    = require('gulp-ng-annotate');
 var gulpFilter    = require('gulp-filter');
 var merge         = require('merge-stream');
 var babel         = require('gulp-babel');
+var templateCache = require('gulp-angular-templatecache');
+var minifyHTML    = require('gulp-minify-html');
+var addStream     = require('add-stream');
 //var debug         = require('gulp-debug');
 var log           = console.log;
 
@@ -53,22 +55,23 @@ var errorNotifier = function (err) {
     this.emit('end');
 };
 
+var prepareTemplates = function () {
+    return gulp.src('src/**/*.html')
+        .pipe(minifyHTML())
+        .pipe(templateCache({
+            standalone: true,
+            transformUrl: function(url) {
+                return 'assets/' + url;
+            }
+        }));
+}
+
 // TASKS
 gulp.task('copy', function () {
     return gulp.src(conf.copyFiles, {base: 'src'})
         .pipe(changed(conf.destination))
         .pipe(gulp.dest(conf.destination))
         .pipe(livereload());
-});
-
-gulp.task('html', function () {
-    del('public/**/*.html').then(function () {
-        return gulp.src(['src/**/*.html', '!src/**/_*.html'])
-             .pipe(fileinclude({basepath: 'src/'}))
-             .pipe(changed(conf.destination))
-             .pipe(gulp.dest(conf.destination))
-             .pipe(livereload());
-    });
 });
 
 //process styles: run sass, autoprefixer, cssmin
@@ -91,6 +94,8 @@ gulp.task('styles', function () {
 //proccess scripts: run concat and unglify
 gulp.task('scripts', function () {
     return gulp.src(conf.scripts)
+        .pipe(addStream.obj(prepareTemplates()))
+        .pipe(debug())
         .pipe(plumber({errorHandler: errorNotifier}))
         .pipe(jshint('.jshintrc'))
         .pipe(jshint.reporter(stylish))
@@ -98,8 +103,8 @@ gulp.task('scripts', function () {
             .pipe(babel({
                 presets: ['es2015']
             }))
-            .pipe(concat('app.min.js'))
             .pipe(ngAnnotate({single_quotes: true}))
+            .pipe(concat('app.min.js'))
             .pipe(uglify({compress: {drop_debugger: false}}))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(conf.destination + '/js'))
@@ -122,7 +127,7 @@ gulp.task('watch', function () {
     livereload.listen();
 
     gulp.watch(conf.copyFiles, ['copy']);
-    gulp.watch('src/**/*.html', ['html']);
+    gulp.watch('src/**/*.html', ['scripts']);
     gulp.watch('src/**/*.scss', ['styles']);
     gulp.watch(conf.scripts, ['scripts']);
     gulp.watch(conf.vendorScripts, ['vendorScripts']);
@@ -135,5 +140,5 @@ gulp.task('clean', function (cb) {
 
 //run all tasks
 gulp.task('default', function () {
-    gulp.start('clean', 'copy', 'styles', 'scripts', 'vendorScripts', 'html');
+    gulp.start('clean', 'copy', 'styles', 'scripts', 'vendorScripts', 'templates');
 });
