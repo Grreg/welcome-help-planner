@@ -12,6 +12,7 @@
     "angularjs": "~1.4.5",
     "angular-ui-validate": "~1.2.1",
     "sass-bootstrap": "~3.0.2",
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "angular-mocks": "~1.4.8"
   }
 }

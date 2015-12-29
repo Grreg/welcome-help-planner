@@ -35,7 +35,8 @@ var conf = {
     ],
     scripts: [
         'src/app.js',
-        'src/**/*.js'
+        'src/**/*.js',
+        '!src/**/*Test.js'
     ],
     copyFiles: ['src/**/*', '!src/**/*.scss', '!src/scss', '!src/**/*.js', '!src/**/*.html'],
     autoprefixerSupport: ['last 2 version'] //@see https://github.com/ai/browserslist#queries
