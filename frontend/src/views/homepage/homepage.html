@@ -1,5 +1,11 @@
 <div ng-include="'assets/directives/header/header.html'"></div>
 
 <main class="container">
-    <p>Start</p>
+    <h1>Welcome to Help Planner</h1>
+    <h2>Please select an organization</h2>
+
+    <ul>
+        <li ng-repeat="organization in organizations">{{ organization.name }}</li>
+    </ul>
+
 </main>

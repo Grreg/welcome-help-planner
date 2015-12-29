@@ -13,12 +13,17 @@
             })
             .state('homepage', {
                 url: '/',
-                templateUrl: 'assets/views/homepage/homepage.html'
+                templateUrl: 'assets/views/homepage/homepage.html',
+                controller: 'homepageCtrl'
             });
     })
 
     .run(function run ($rootScope, $state) {
         $rootScope.$state = $state;
+    })
+
+    .constant('config', {
+        apiBase: 'api/'
     });
 
 })();
