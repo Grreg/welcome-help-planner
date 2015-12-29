@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class DefaultController extends Controller
@@ -32,5 +33,15 @@ class DefaultController extends Controller
         }
 
         return $this->render('AppBundle:Default:index.html.twig');
+    }
+
+    public function organizationsAction()
+    {
+        $data = [
+            ['id' => 1, 'name' => 'Dummy Organization One', 'slug' => 'dummy-one'],
+            ['id' => 2, 'name' => 'Dummy Organization Two', 'slug' => 'dummy-two'],
+        ];
+
+        return new JsonResponse($data);
     }
 }
