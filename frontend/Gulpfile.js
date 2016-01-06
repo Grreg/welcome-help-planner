@@ -139,5 +139,5 @@ gulp.task('clean', function (cb) {
 
 //run all tasks
 gulp.task('default', function () {
-    gulp.start('clean', 'copy', 'styles', 'scripts', 'vendorScripts', 'templates');
+    gulp.start('clean', 'copy', 'styles', 'scripts', 'vendorScripts');
 });
