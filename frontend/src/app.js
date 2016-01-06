@@ -15,6 +15,11 @@
                 url: '/',
                 templateUrl: 'assets/views/homepage/homepage.html',
                 controller: 'homepageCtrl'
+            })
+            .state('organizationStart', {
+                url: '/:organization/',
+                templateUrl: 'assets/views/organizationStart/organizationStart.html',
+                controller: 'organizationStartCtrl'
             });
     })
 
