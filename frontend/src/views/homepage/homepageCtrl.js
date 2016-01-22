@@ -3,7 +3,7 @@
 
     angular.module('HelpPlanner')
         .controller('homepageCtrl', function ($scope, organizations) {
-            organizations.get().then((organizations) =>
+            organizations.findAll().then((organizations) =>
                 $scope.organizations = organizations
             );
         });

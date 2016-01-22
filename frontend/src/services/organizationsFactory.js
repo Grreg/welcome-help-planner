@@ -3,10 +3,11 @@
 
     angular.module('HelpPlanner')
         .factory('organizations', function ($http, config) {
-            const url = config.apiBase + 'organizations';
+            const baseUrl = config.apiBase + 'organizations/';
 
             return {
-                get: () => $http.get(url).then((response) => response.data)
+                findAll: () => $http.get(baseUrl).then((response) => response.data),
+                findBySlug: (slug) => $http.get(baseUrl + slug).then((response) => response.data)
             };
         });
 

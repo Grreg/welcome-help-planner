@@ -1,11 +1,18 @@
-<div ng-include="'assets/directives/header/header.html'"></div>
-
-<main class="container">
+<main class="container view-homepage">
     <h1>Welcome to Help Planner</h1>
     <h2>Please select an organization</h2>
 
-    <ul>
-        <li ng-repeat="organization in organizations">{{ organization.name }}</li>
-    </ul>
-
+    <table class="table table-striped">
+        <tbody>
+            <tr ng-repeat="organization in organizations">
+                <td><img src="{{ organization.logoUrl }}" alt="{{ organization.name }} Logo"></td>
+                <td class="col-organization-name"><strong>{{ organization.name }}</strong></td>
+                <td>
+                    <p>{{ organization.description }}</p>
+                    <address class="organization-address">{{ organization.address }}</address>
+                    <a class="btn btn-primary" ui-sref="organizationStart({organization: organization.slug})">Participate</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </main>

@@ -1,7 +1,18 @@
 organizations:
-    path:      /api/organizations
+    path:      /api/organizations/
     defaults:  { _controller: AppBundle:Default:organizations}
     methods: [GET]
+
+organization:
+    path: /api/organizations/{slug}
+    defaults:  { _controller: AppBundle:Default:organizationBySlug}
+    methods: [GET]
+
+api_not_found:
+    path:      /api/{path}
+    defaults:  { _controller: AppBundle:Default:apiNotFound, path: '' }
+    requirements:
+        path: .+
 
 frontend:
     path:      /{path}
