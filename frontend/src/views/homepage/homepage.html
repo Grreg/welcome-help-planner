@@ -1,22 +1,27 @@
 <main class="container view-homepage">
     <h1>Welcome Help! Planner</h1>
 
-    <p>Hallo!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cum doloribus eaque eius esse eum itaque maxime necessitatibus nemo nihil omnis pariatur, perspiciatis quaerat quas quidem reprehenderit sed sint sit.</p>
+    <div class="introduction">
+        <p>Hallo!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cum doloribus eaque eius esse eum itaque
+            maxime necessitatibus nemo nihil omnis pariatur, perspiciatis quaerat quas quidem reprehenderit sed sint
+            sit.</p>
 
-    <p>Bei den folgenden Organisationen kannst du mithelfen:</p>
+        <p>Bei den folgenden Organisationen kannst du mithelfen:</p>
+    </div>
 
-    <table class="table table-striped">
-        <tbody>
-            <tr ng-repeat="organization in organizations">
-                <td><img src="{{ organization.logoUrl }}" alt="{{ organization.name }} Logo"></td>
-                <td class="col-organization-name"><strong>{{ organization.name }}</strong></td>
-                <td>
-                    <p>{{ organization.description }}</p>
-                    <address class="organization-address">{{ organization.address }}</address>
-                    <a class="btn btn-primary" ui-sref="organizationStart({organization: organization.slug})">Mitmachen!</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row organization-row" ng-repeat="organization in organizations">
+            <div class="col-sm-3 organization-image-col">
+                <img src="{{ organization.logoUrl }}" alt="{{ organization.name }} Logo">
+                <br>
+                <strong>{{ organization.name }}</strong>
+            </div>
+            <div class="col-sm-9">
+                <p>{{ organization.description }}</p>
+                <address class="organization-address">{{ organization.address }}</address>
+                <a class="btn btn-primary" ui-sref="organizationStart({organization: organization.slug})">Mitmachen!</a>
+            </div>
+        </div>
+    </div>
 </main>
