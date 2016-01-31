@@ -19,7 +19,7 @@ var gulpFilter    = require('gulp-filter');
 var merge         = require('merge-stream');
 var babel         = require('gulp-babel');
 var templateCache = require('gulp-angular-templatecache');
-var minifyHTML    = require('gulp-minify-html');
+var htmlmin       = require('gulp-htmlmin');
 var addStream     = require('add-stream');
 //var debug         = require('gulp-debug');
 var log           = console.log;
@@ -57,7 +57,7 @@ var errorNotifier = function (err) {
 
 var prepareTemplates = function () {
     return gulp.src('src/**/*.html')
-        .pipe(minifyHTML())
+        .pipe(htmlmin({collapseWhitespace: false}))
         .pipe(templateCache({
             standalone: true,
             transformUrl: function(url) {
