@@ -1,2 +1,26 @@
-.view-start {
+.view-homepage {
+    .introduction {
+        padding-bottom: $padding-base-vertical * 4;
+    }
+
+    .organization-row:not(:first-child) {
+        margin-top: $padding-base-vertical * 6;
+    }
+
+    .organization-address {
+        font-style: italic;
+    }
+
+    .organization-image-col {
+        text-align: center;
+
+        @media(max-width: $screen-sm) {
+            margin-bottom: $padding-base-vertical * 2;
+        }
+
+        strong {
+            display: block;
+            margin-top: $padding-base-vertical;
+        }
+    }
 }
